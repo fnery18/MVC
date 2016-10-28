@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Listar</h2>
+
+
+<table class="table-striped">
+    <tr>
+        <th style="padding:10px">Nome Do Cliente<br></th>
+        <th style="padding:10px">Idade do Cliente<br></th>
+        <th style="padding:10px">Crédito do Cliente<br></th>
+    </tr>
+@foreach (var client in ViewBag.lista)
+{
+    <tr>
+        <td>@client.nome</td>
+        <td>@client.idade</td>
+        <td>@client.credito</td>
+     </tr>
+}
+</table>
+
+
