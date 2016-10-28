@@ -10,17 +10,20 @@ namespace Fiap.Exemplo01.MVC.Web.Controllers
     public class ClienteController : Controller
     {
         // GET: Cliente
-        public ActionResult CadastrarC()
+        [HttpGet]
+        public ActionResult Cadastrar()
         {
-            return View("Cadastrar");
+            return View();
         }
 
         private static List<Cliente> _lista = new List<Cliente>();
-
+        [HttpPost]
         public ActionResult Cadastrar(Cliente cliente)
         {
             _lista.Add(cliente);
-            return Content("<h1> Cliente Cadastado!</h1>");
+            TempData["msg"] = "Cliente Cadastrado!";
+            return RedirectToAction("Cadastrar"); // rsolve o problema de na hora de salvar o cadastro, f5 cadastra tudo em branco.
+
 
         }
 

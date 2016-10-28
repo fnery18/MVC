@@ -1,40 +1,33 @@
-﻿@{
+﻿@model Fiap.Exemplo01.MVC.Web.Models.Cliente
+@{
     ViewBag.Title = "Cadastrar";
 }
 
-<h2>Cadastrar</h2>
+<h2>.:Cadastrar Cliente:.</h2>
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
 
-<form method="post" action="/Cliente/Cadastrar">
+
+@using (Html.BeginForm())
+{
     <div class="form-group">
-        <p>
-            <label>
-                Digite o nome do cliente:
-                <input type="text" name="nome" class="form-control" />
-            </label>
-        </p>
+        @Html.LabelFor(c => c.nome)
+        @Html.TextBoxFor(c => c.nome, new { placeholder = "Digite seu nome", @class = "form-control" })
     </div>
     <div class="form-group">
-        <p>
-            <label>
-                Digite a idade do cliente:
-                <input type="number" name="idade" class="form-control" />
-            </label>
-        </p>
+        @Html.LabelFor(c => c.idade)
+        @Html.TextBoxFor(c => c.idade,new { @class = "form-control" })
     </div>
     <div class="form-group">
-        <p>
-            <label>
-                Digite o crédito do cliente:
-                <input type="text" name="credito" class="form-control" />
-            </label>
-        </p>
+        @Html.LabelFor(c => c.credito)
+        @Html.TextBoxFor(c => c.credito, new { @class = "form-control" })
     </div>
-
-    <p>
-        <input type="submit" value="Enviar" class="btn btn-primary" />
-        <a href="~/Cliente/Listar">Listar</a>
-    </p>
-
-
-</form>
+    <div class="form-group">
+        <input type="submit" value="Salvar" class="btn btn-primary" />
+    </div>
+}
 
